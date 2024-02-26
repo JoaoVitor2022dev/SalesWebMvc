@@ -8,8 +8,10 @@ namespace SalesWebMvcProject
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddDbContext<SalesWebMvcProjectContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("SalesWebMvcProjectContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMvcProjectContext' not found.")));
+
+            var connectionString = builder.Configuration.GetConnectionString("SalesWebMvcContext");
+            builder.Services.AddDbContext<SalesWebMvcProjectContext>(Options => Options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
