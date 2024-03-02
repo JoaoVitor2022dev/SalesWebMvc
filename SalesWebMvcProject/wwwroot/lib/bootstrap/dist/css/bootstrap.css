@@ -70,6 +70,27 @@
   }
 }
 
+.dl-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+    .dl-horizontal dt {
+        width: 25%;
+        margin-right: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-weight: bold;
+    }
+
+    .dl-horizontal dd {
+        width: 75%;
+        margin-left: 0;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
