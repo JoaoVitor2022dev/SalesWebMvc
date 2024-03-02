@@ -1,4 +1,5 @@
-﻿using SalesWebMvcProject.Data;
+﻿using Microsoft.AspNetCore.Mvc;
+using SalesWebMvcProject.Data;
 using SalesWebMvcProject.Models;
 
 namespace SalesWebMvcProject.Services
@@ -12,9 +13,18 @@ namespace SalesWebMvcProject.Services
             _context = context;
         }
 
+        // get data in database
         public List<Seller> FindAll()
         {
             return _context.Seller.ToList(); 
+        }
+
+        // insert data in database
+        internal void Insert(Seller obj)
+        {
+            obj.Department = _context.Department.First();
+            _context.Add(obj); 
+            _context.SaveChanges();
         }
     }
 }
