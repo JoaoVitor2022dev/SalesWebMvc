@@ -15,7 +15,8 @@ namespace SalesWebMvcProject
             builder.Services.AddDbContext<SalesWebMvcProjectContext>(Options => Options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
             // injerção de depedenci apara os serviços   
-            builder.Services.AddScoped<SellerService>(); 
+            builder.Services.AddScoped<SellerService>();
+            builder.Services.AddScoped<DepartmentService>(); 
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
