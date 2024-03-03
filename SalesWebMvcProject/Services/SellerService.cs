@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SalesWebMvcProject.Data;
 using SalesWebMvcProject.Models;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
+using Humanizer;
+using SalesWebMvcProject.Services.Exeptions;
 
 namespace SalesWebMvcProject.Services
 {
@@ -39,6 +41,25 @@ namespace SalesWebMvcProject.Services
             var obj = _context.Seller.Find(id);
             _context.Seller.Remove(obj);
             _context.SaveChanges();
+        }
+
+        // Update data in database
+        public void Update(Seller obj) 
+        {
+           if(!_context.Seller.Any(x => x.Id == obj.Id))
+            {
+                throw new NotFoundException("Id not found"); 
+            }
+
+            try
+            {
+              _context.Update(obj);
+              _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException e) 
+            {
+                throw new DbConcurrencyException(e.Message); 
+            }
         }
     }
 }
