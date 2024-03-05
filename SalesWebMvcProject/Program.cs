@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using SalesWebMvcProject.Data;
 using SalesWebMvcProject.Services;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization; 
 
 namespace SalesWebMvcProject
 {
@@ -14,20 +16,38 @@ namespace SalesWebMvcProject
             var connectionString = builder.Configuration.GetConnectionString("SalesWebMvcContext");
             builder.Services.AddDbContext<SalesWebMvcProjectContext>(Options => Options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-            // injerção de depedenci apara os serviços   
+            // Injeção de dependência para os serviços
             builder.Services.AddScoped<SellerService>();
-            builder.Services.AddScoped<DepartmentService>(); 
+            builder.Services.AddScoped<DepartmentService>();
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            // Configure localization
+            var supportedCultures = new[]
+             {
+             new CultureInfo("en-US"),
+             new CultureInfo("pt-BR")
+             };
 
+            var localizationOptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"), // Defina a cultura padrão
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            };
+
+            builder.Services.AddControllersWithViews()
+                .AddViewLocalization(); // Adicione esta linha para habilitar a localização nas visualizações
+
+            // Construa o aplicativo
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // Adicione middleware de localização
+            app.UseRequestLocalization(localizationOptions);
+
+            // Configure o pipeline de solicitação HTTP
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                // O valor padrão de HSTS é de 30 dias. Você pode querer alterar isso para cenários de produção, veja https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -44,5 +64,7 @@ namespace SalesWebMvcProject
 
             app.Run();
         }
+
+
     }
 }
