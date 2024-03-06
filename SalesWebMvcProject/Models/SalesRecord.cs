@@ -10,10 +10,8 @@ namespace SalesWebMvcProject.Models
         public string Title { get; set; }
         public SaleStatus Status { get; set; }
         public Seller Seller { get; set; }
-
         public SalesRecord()
         { }
-
         public SalesRecord(int id, DateTime date, double amount, string title, SaleStatus status, Seller seller)
         {
             Id = id;
