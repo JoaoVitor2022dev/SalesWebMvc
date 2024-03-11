@@ -40,9 +40,16 @@ namespace SalesWebMvcProject.Services
         // Delete data from database 
         public async Task RemoveAsync(int id)
         {
-            var obj = await _context.Seller.FindAsync(id);
-            _context.Seller.Remove(obj);
-            await _context.SaveChangesAsync();
+            try
+            {
+               var obj = await _context.Seller.FindAsync(id);
+               _context.Seller.Remove(obj);
+               await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e) 
+            {
+                throw new IntegrityExeption(e.Message); 
+            }
         }
 
         // Update data in database
@@ -60,7 +67,7 @@ namespace SalesWebMvcProject.Services
             }
             catch (DbUpdateConcurrencyException e)
             {
-                throw new DbConcurrencyException(e.Message);
+                throw new DbConcurrencyException("Cant´t delete seller because he/she has sales");
             }
         }
     }
