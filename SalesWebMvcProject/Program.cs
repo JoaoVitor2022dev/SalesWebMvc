@@ -19,6 +19,7 @@ namespace SalesWebMvcProject
             // Injeção de dependência para os serviços
             builder.Services.AddScoped<SellerService>();
             builder.Services.AddScoped<DepartmentService>();
+            builder.Services.AddScoped<SalesRecordService>(); 
 
             // Configure localization
             var supportedCultures = new[]
