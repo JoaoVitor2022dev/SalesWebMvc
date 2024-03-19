@@ -2,8 +2,8 @@
 {
     public enum SaleStatus : int
     {
-        Pending = 0,
-        Bille = 1,
-        Failed = 2
+        Processando = 0,
+        Finalizada = 1,
+        recusada = 2
     }
 }

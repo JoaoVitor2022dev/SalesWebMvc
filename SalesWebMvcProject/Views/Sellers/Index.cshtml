@@ -4,27 +4,30 @@
     ViewData["Sellers"] = "Index";
 }
 
-<h1>Sellers</h1>
-<tr/>
+<h1>Vendedores</h1>
+<br/>
 
 <p>
-     <a asp-action="Create" class="btn btn-info">Create new </a>
+    <a asp-action="Create" class="btn btn-primary">Criar novo vendedor</a>
 </p>
-
+<br/>
 <table class="table table-striped table-hover">
     <thead class="sucess">
         <tr>
             <th>
-                 @Html.DisplayNameFor(model => model.Name)
+                 Nome
             </th>
             <th>
-                 @Html.DisplayNameFor(model => model.Email)
+                 E-mail
             </th>
             <th>
-                 @Html.DisplayNameFor(model => model.BirthDate)
+                 Data de nascimento
             </th>
             <th>
-                 @Html.DisplayNameFor(model => model.BaseSalary)
+                 Salário
+            </th>
+            <th>
+                Funcionalidades
             </th>
         </tr>
         <tbody>

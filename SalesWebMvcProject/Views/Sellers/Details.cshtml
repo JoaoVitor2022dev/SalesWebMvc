@@ -1,32 +1,33 @@
 ﻿@model SalesWebMvcProject.Models.Seller; 
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes";
 }
 
 <h2>@ViewData["Title"]</h2>
 
 <div>
-    <h4>Details</h4>
     <hr />
     <div class="dl-horizontal">
-        <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+        <dt>Nome:</dt>
         <dd>@Html.DisplayFor(model => model.Name)</dd>
 
-        <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+        <dt>E-mail:</dt>
         <dd>@Html.DisplayFor(model => model.Email)</dd>
 
-        <dt>@Html.DisplayNameFor(model => model.BirthDate)</dt>
+        <dt>Data de nascimento:</dt>
         <dd>@Html.DisplayFor(model => model.BirthDate)</dd>
 
-        <dt>@Html.DisplayNameFor(model => model.BaseSalary)</dt>
+        <dt>Salário:</dt>
         <dd>@Html.DisplayFor(model => model.BaseSalary)</dd>
 
-        <dt>@Html.DisplayNameFor(model => model.Department)</dt>
+        <dt>Departamento:</dt>
         <dd>@Html.DisplayFor(model => model.Department.Name)</dd>
     </div>
+    <br />
+    <br />
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-info">Edit</a>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success">Editar</a>
+    <a asp-action="Index" class="btn btn-warning">Voltar</a>
 </div>

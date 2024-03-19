@@ -11,8 +11,8 @@ using SalesWebMvcProject.Data;
 namespace SalesWebMvcProject.Migrations
 {
     [DbContext(typeof(SalesWebMvcProjectContext))]
-    [Migration("20240227221745_OtherEntities")]
-    partial class OtherEntities
+    [Migration("20240317190130_OtherEntitis")]
+    partial class OtherEntitis
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,7 +87,8 @@ namespace SalesWebMvcProject.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(60)
+                        .HasColumnType("varchar(60)");
 
                     b.HasKey("Id");
 

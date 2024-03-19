@@ -1,26 +1,28 @@
 ﻿@model IEnumerable<SalesWebMvcProject.Models.Department>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Department";
 }
 
-<h1>Index</h1>
-
+<h1>@ViewData["Title"]</h1>
+<br/>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Criar novo Departamento</a>
 </p>
-<table class="table">
-    <thead>
+<br/>
+<table class="table table-striped table-hover">
+    <thead class="sucess">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+
+                Nome:
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr >
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
