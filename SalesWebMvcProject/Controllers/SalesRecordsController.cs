@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SalesWebMvcProject.Models;
 using SalesWebMvcProject.Services;
 
 namespace SalesWebMvcProject.Controllers
@@ -11,7 +12,6 @@ namespace SalesWebMvcProject.Controllers
         {
             _salesRecordService = salesRecordService;
         }
-
         public IActionResult Index()
         {
             return View();
@@ -21,6 +21,22 @@ namespace SalesWebMvcProject.Controllers
         {
             var list = await _salesRecordService.FindAllSalesRecordServiceAsync();
             return View(list);
+        }
+
+        // page criate
+        public async Task<IActionResult> Create()
+        {
+            var list = await _salesRecordService.FindAllSalesRecordServiceAsync();
+            return View(list);
+        }
+
+        // inserir vendas no sistema 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(SalesRecord salesRecord)
+        {
+            await _salesRecordService.InsertAsync(salesRecord);
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> SimpleSearch(DateTime? minDate, DateTime? maxDate)

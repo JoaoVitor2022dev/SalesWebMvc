@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Seller</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+                <label>Title:</label>
+                <input type="text" name="Title" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Date:</label>
+                <input type="text" name="Date" class="form-control" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label>Amount:</label>
+                <input type="text" name="Amount" class="form-control" />
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
