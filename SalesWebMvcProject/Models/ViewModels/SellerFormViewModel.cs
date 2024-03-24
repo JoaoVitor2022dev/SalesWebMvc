@@ -1,4 +1,6 @@
-﻿namespace SalesWebMvcProject.Models.ViewModels
+﻿using SalesWebMvcProject.Models.ViewModels;
+
+namespace SalesWebMvcProject.Models.ViewModels
 {
     public class SellerFormViewModel
     {
@@ -7,3 +9,4 @@
 
     }
 }
+

@@ -6,6 +6,7 @@ using Humanizer;
 using SalesWebMvcProject.Services.Exeptions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace SalesWebMvcProject.Services
 {
@@ -23,6 +24,12 @@ namespace SalesWebMvcProject.Services
         {
             return await _context.Seller.ToListAsync();
         }
+
+        public async Task<List<Seller>> FindAllSellerAsync()
+        {
+            return await _context.Seller.OrderBy(x => x.Name).ToListAsync();
+        }
+
 
         // insert data into database
         public async Task InsertAsync(Seller obj)

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SalesWebMvcProject.Models;
+using SalesWebMvcProject.Models.ViewModels;
 using SalesWebMvcProject.Services;
 
 namespace SalesWebMvcProject.Controllers
@@ -7,10 +8,12 @@ namespace SalesWebMvcProject.Controllers
     public class SalesRecordsController : Controller
     {
         private readonly SalesRecordService _salesRecordService;
+        private readonly SellerService _sellerService;
 
-        public SalesRecordsController(SalesRecordService salesRecordService)
+        public SalesRecordsController(SalesRecordService salesRecordService, SellerService sellerService)
         {
             _salesRecordService = salesRecordService;
+            _sellerService = sellerService;
         }
         public IActionResult Index()
         {
@@ -26,8 +29,10 @@ namespace SalesWebMvcProject.Controllers
         // page criate
         public async Task<IActionResult> Create()
         {
-            var list = await _salesRecordService.FindAllSalesRecordServiceAsync();
-            return View(list);
+            var Sellers = await _sellerService.FindAllSellerAsync();
+
+            var viewModel = new SalesRecordsFormViewModel { Sellers = Sellers };
+            return View(viewModel);
         }
 
         // inserir vendas no sistema 

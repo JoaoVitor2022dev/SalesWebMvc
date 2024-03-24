@@ -11,15 +11,15 @@ using SalesWebMvcProject.Data;
 namespace SalesWebMvcProject.Migrations
 {
     [DbContext(typeof(SalesWebMvcProjectContext))]
-    [Migration("20240317190130_OtherEntitis")]
-    partial class OtherEntitis
+    [Migration("20240324000126_DepartmentForeingKey")]
+    partial class DepartmentForeingKey
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "8.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("SalesWebMvcProject.Models.Department", b =>

@@ -1,35 +1,54 @@
-﻿
+﻿@model SalesWebMvcProject.Models.ViewModels.SalesRecordsFormViewModel;
+@using SalesWebMvcProject.Models.Enums; 
+
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Criação de Vendas";
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<h4>Seller</h4>
+<h4>Venda</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form>
+        <form asp-action="Create">
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
-                <label>Title:</label>
-                <input type="text" name="Title" class="form-control" />
+                <label asp-for="salesRecord.Title" class="control-label">Título:</label>
+                <input asp-for="salesRecord.Title" class="form-control" />
+                <span asp-validation-for="salesRecord.Title" class="text-danger"></span>
             </div>
+            <br/>
             <div class="form-group">
-                <label>Date:</label>
-                <input type="text" name="Date" class="form-control" />
+                <label asp-for="salesRecord.Amount" class="control-label">Preço:</label>
+                <input asp-for="salesRecord.Amount" class="form-control" />
+                <span asp-validation-for="salesRecord.Title" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
-                <label>Amount:</label>
-                <input type="text" name="Amount" class="form-control" />
+                <label asp-for="salesRecord.Date" class="control-label">Data da venda:</label>
+                <input asp-for="salesRecord.Date" class="form-control" />
+                <span asp-validation-for="salesRecord.Title" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="salesRecord.SellerId" class="control-label">Vendedor:</label>
+                <select asp-for="salesRecord.SellerId" asp-items="@(new SelectList(Model.Sellers,"Id","Name"))" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="salesRecord.Status" class="control-label">Status da Venda:</label>
+                <select asp-for="salesRecord.Status" asp-items="Html.GetEnumSelectList<SaleStatus>()" class="form-control"></select>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Criar venda" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
+
 
 @section Scripts {
     @{

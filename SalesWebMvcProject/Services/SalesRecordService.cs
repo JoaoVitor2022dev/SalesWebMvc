@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SalesWebMvcProject.Data;
 using SalesWebMvcProject.Models;
+using System.Linq;
+
 
 namespace SalesWebMvcProject.Services
 {
