@@ -21,4 +21,8 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Imagens\FLEEG-Sistema-para-controle-de-vendas.png" />
+  </ItemGroup>
+
 </Project>

@@ -3,7 +3,7 @@
     ViewData["Title"] = "Sales Records";
 }
 
-<h1>Vendas</h1>
+<h1 class="text-center">Vendas</h1>
 <br/>
 <p>
     <a asp-action="Create" class="btn btn-primary">Criar nova venda</a>
@@ -25,6 +25,9 @@
             <th>
                 status
             </th>
+            <th/>
+                Id do Vendedor
+            <th/>
             <th></th>
         </tr>
     </thead>
@@ -38,9 +41,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Amount)
                 </td>
-
                 <td>
                     @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SellerId)
+
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
