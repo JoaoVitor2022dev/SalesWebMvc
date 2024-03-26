@@ -1,12 +1,12 @@
 ﻿@model SalesWebMvcProject.Models.ViewModels.SellerFormViewModel; 
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Vendedor";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="text-center">@ViewData["Title"]</h1>
 
-<h4>Seller</h4>
+<h4>Criar vendedor</h4>
 <hr/>
 <div class="row">
     <div class="col-md-4">
@@ -45,7 +45,11 @@
              <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+            <br />
         </form>
+    </div>
+    <div>
+        <a asp-action="Index" class="btn btn-warning">Voltar</a>
     </div>
 </div>
 
